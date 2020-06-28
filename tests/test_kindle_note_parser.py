@@ -21,11 +21,16 @@ def test_bookTitle():
 def test_section_headings():
     notebook_parsed = run_parser()
     assert len(notebook_parsed.sections) == 2
-    #TODO fix assertion
-    # assert notebook_parsed.sections == [
-    #         'Introduction: My Story',
-    #         'The Fundamentals: Why Tiny Changes Make a Big Difference'
-    #     ]
+
+    actual_titles = []
+
+    for section in notebook_parsed.sections:
+        actual_titles.append(section.title)
+
+    assert actual_titles == [
+            'Introduction: My Story',
+            'The Fundamentals: Why Tiny Changes Make a Big Difference'
+        ]
 
 #TODO fix mocking
 # def test_notes(mocker):
