@@ -21,6 +21,7 @@ class Section:
 
 class Note:
     def __init__(self, raw_title, text):
+        #TODO this needs to be relaxed for bookmarks
         if not isinstance(text, str):
             raise ValueError("'text' needs to be a String")
 
@@ -41,12 +42,11 @@ class Note:
         if match:
             return match.group(1)
         else:
-            raise ValueError()
+            return 'N/A'
 
     @staticmethod
     def chapterFromRawTitle(raw_title):
-        match = re.search(r'^[a-zA-Z]*\(.*\)\s-\s(.*?)\s>\s[a-zA-Z]*\s([0-9]*?)\s·\s[a-zA-Z]*\s([0-9]*?)$',raw_title)
-
+        match = re.search(r'^[a-zA-Z \(\)]*\s-\s(.*?)\s>\s[a-zA-Z]*\s([0-9]*?)\s·\s[a-zA-Z]*\s([0-9]*?)$',raw_title)
 
         if match:
             return match.group(1)
