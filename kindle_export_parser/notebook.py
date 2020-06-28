@@ -34,8 +34,6 @@ class Note:
 
         self.text = text
 
-    #TODO handle bookmarks
-
     @staticmethod
     def colorFromRawTitle(raw_title):
         match = re.search(r'\((.*?)\)',raw_title)

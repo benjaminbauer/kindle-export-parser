@@ -19,7 +19,6 @@ def test_init_check_raw_title():
     with pytest.raises(ValueError):
         Note(invalid_raw_title_type, valid_text)
 
-
 @pytest.mark.parametrize("test_input,expected", [
     (raw_title_wo_chapter, "yellow"),
     (raw_title_w_chapter, "yellow"),
