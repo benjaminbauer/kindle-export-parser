@@ -31,6 +31,7 @@ def test_sections():
             'The Fundamentals: Why Tiny Changes Make a Big Difference'
         ]
 
+#TODO this is not a proper unitstest
 def test_notes():
     notebook_parsed = run_parser()
 
@@ -41,4 +42,16 @@ def test_notes():
             for note in section.chapters[chapter]:
                 notes.append(note)
 
-    assert len(notes) == 3
+    assert len(notes) == 4
+
+    texts = []
+    for note in notes:
+        texts.append(note.text)
+
+    assert texts == [
+            'the quality of our lives often depends on the quality of our habits.',
+            'This is my note in the same place as a highlight',
+            'Making a choice that is 1 percent better or 1 percent worse seems insignificant in the moment, but over the span of moments that make up a lifetime these choices determine the difference between who you are and who you could be.',
+            'You should be far more concerned with your current trajectory than with your current results.',
+            ]
+
