@@ -31,6 +31,7 @@ class Note:
         self.color = Note.colorFromRawTitle(raw_title)
         self.chapter = Note.chapterFromRawTitle(raw_title)
         self.position = Note.positionFromRawTitle(raw_title)
+        self.type = Note.typeFromRawTitle(raw_title)
 
         self.text = text
 
@@ -60,6 +61,17 @@ class Note:
             raise ValueError()
 
     @staticmethod
+    def typeFromRawTitle(raw_title):
+        # match 'Higlight(', 'Note ', 'Bookmark '
+        match = re.search(r'^([a-zA-Z]*)',raw_title)
+        #TODO no error checking yet it it is really on of:
+        # ['Bookmark', 'Note', 'Highlight']
+        if match:
+            return match.group(1)
+        else:
+            raise ValueError()
+
+    @staticmethod
     def _segmentsFromRawTitle(raw_title):
         segments = raw_title.split('-')
 
@@ -67,4 +79,3 @@ class Note:
             raise ValueError("unexpected title for parsing chapter: '{}'".format(raw_title))
 
         return segments
-

@@ -50,3 +50,13 @@ def test_chapter(test_input,expected):
 def test_postion(test_input,expected):
     assert Note(test_input, valid_text).position == expected
 
+@pytest.mark.parametrize("test_input,expected", [
+    (raw_title_wo_chapter, "Highlight"),
+    (raw_title_w_chapter, "Highlight"),
+    (raw_title_minus_in_title, "Highlight"),
+    (raw_title_note, "Note"),
+    (raw_title_bookmark, "Bookmark"),
+    ])
+def test_type(test_input,expected):
+    assert Note(test_input, valid_text).type == expected
+
