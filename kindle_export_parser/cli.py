@@ -1,11 +1,9 @@
 import click
 import os
 
-# from kindle_export_parser.notebook import KindleNotebook, Note
-# from kindle_export_parser.parser import MyHTMLParser
-from notebook import KindleNotebook, Note
-from parser import MyHTMLParser
-from md_renderer import render_md_from_notebook
+from .notebook import KindleNotebook, Note
+from .parser import MyHTMLParser
+from .md_renderer import render_md_from_notebook
 
 @click.command()
 @click.argument('file')

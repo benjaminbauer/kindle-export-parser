@@ -1,5 +1,5 @@
 from html.parser import HTMLParser
-from kindle_export_parser.notebook import KindleNotebook, Section, Note
+from .notebook import KindleNotebook, Section, Note
 
 class MyHTMLParser(HTMLParser):
 
