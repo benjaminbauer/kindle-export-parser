@@ -1,6 +1,6 @@
-import pytest
 from kindle_export_parser.notebook import KindleNotebook, Section, Note
 from kindle_export_parser.md_renderer import render_md_from_notebook
+
 
 def createMockNotebook():
     raw_title_wo_chapter = 'Highlight(yellow) - Page 7 · Location 151'
@@ -16,13 +16,13 @@ def createMockNotebook():
         Note(raw_title_w_chapter, 'le text 11'),
         Note(raw_title_w_chapter, 'le text 12'),
         Note(raw_note_w_chapter, 'le text 13'),
-        ]
+    ]
     notes2 = [
         Note(raw_title_wo_chapter, 'il texto 21'),
         Note(raw_title_w_chapter, 'le text 21'),
         Note(raw_title_w_chapter, 'le text 22'),
         Note(raw_note_w_chapter, 'le text 23'),
-        ]
+    ]
 
     notebook.sections[0].add_note(notes1[0])
     notebook.sections[0].add_note(notes1[1])
@@ -35,6 +35,7 @@ def createMockNotebook():
     notebook.sections[1].add_note(notes2[3])
 
     return notebook
+
 
 expectation = """
 # Title
@@ -54,6 +55,7 @@ le text 13
 > le text 22
 le text 23
 """
+
 
 def test_render_md():
     notebook = createMockNotebook()

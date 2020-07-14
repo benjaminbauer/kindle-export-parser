@@ -1,5 +1,6 @@
 from html.parser import HTMLParser
-from .notebook import KindleNotebook, Section, Note
+from .notebook import Section, Note
+
 
 class MyHTMLParser(HTMLParser):
 
@@ -7,18 +8,18 @@ class MyHTMLParser(HTMLParser):
         super().__init__()
         self.kindleNotebook = kindleNotebook
 
-        #bookTitle
+        # bookTitle
         self.lookingAtTitle = False
 
         self.lookingAtSectionHeading = False
         self.currentSection = None
 
-        #noteHeading
+        # noteHeading
         self.lookingAtNoteHeading = False
         self.lookingAtNoteText = False
-        self.tmpNote = {'title':'','text':''}
+        self.tmpNote = {'title': '', 'text': ''}
 
-        #authors
+        # authors
         self.lookingAtAuthor = False
 
     def handle_starttag(self, tag, attrs):
@@ -30,12 +31,12 @@ class MyHTMLParser(HTMLParser):
                 if(att[1] == 'bookTitle'):
                     self.lookingAtTitle = True
                 elif(att[1] == 'sectionHeading'):
-                    #reset the current section if any
+                    # reset the current section if any
                     self.currentSection = None
                     self.lookingAtSectionHeading = True
                 elif(att[1] == 'noteHeading'):
                     self.lookingAtNoteHeading = True
-                    self.tmpNote = {'title':'', 'text':''}
+                    self.tmpNote = {'title': '', 'text': ''}
                 elif(att[1] == 'noteText'):
                     self.lookingAtNoteText = True
 
@@ -55,7 +56,7 @@ class MyHTMLParser(HTMLParser):
 
     def handle_data(self, data):
         if self.lookingAtTitle:
-            #title has newlines
+            # title has newlines
             a_string = data.strip()
             literal_string = repr(a_string)
             self.kindleNotebook.bookTitle = literal_string
@@ -66,4 +67,3 @@ class MyHTMLParser(HTMLParser):
             self.tmpNote['title'] += data.strip()
         elif self.lookingAtNoteText:
             self.tmpNote['text'] += data.strip()
-

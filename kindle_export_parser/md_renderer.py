@@ -1,6 +1,6 @@
 from jinja2 import Template
 
-#TODO load template from files
+# TODO load template from files
 template_string = """
 # {{ notebook.bookTitle }}
 Author: {{ notebook.author }}
@@ -19,8 +19,8 @@ Author: {{ notebook.author }}
 {% endfor %}
 """
 
+
 def render_md_from_notebook(notebook):
-    template = Template(template_string, trim_blocks=True,lstrip_blocks=True)
+    template = Template(template_string, trim_blocks=True, lstrip_blocks=True)
 
     return template.render(notebook=notebook)
-
