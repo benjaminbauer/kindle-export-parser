@@ -11,8 +11,10 @@ Author: {{ notebook.author }}
         {% for note in section.chapters[chapter] %}
 {% if note.type == "Highlight" %}
 > {{ note.text }}
+
 {% elif note.type == "Note" %}
 {{ note.text }}
+
 {% endif %}
         {% endfor %}
     {% endfor %}
