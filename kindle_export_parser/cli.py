@@ -1,22 +1,13 @@
 import click
 
-from .notebook import KindleNotebook
-from .parser import MyHTMLParser
-from .md_renderer import render_md_from_notebook
+import kindle_export_parser.converter as converter
 
 
 @click.command()
 @click.argument('file')
 def convert(file):
     """Kindle Notebook Export to Markdown"""
-
-    test_html_file = file
-    f = open(test_html_file, "r", encoding="utf8")
-    note = KindleNotebook()
-    parser = MyHTMLParser(note)
-    parser.feed(f.read())
-
-    md_string = render_md_from_notebook(note)
+    md_string = converter.convert_kindle_html_to_md(file)
     print(md_string)
 
 
