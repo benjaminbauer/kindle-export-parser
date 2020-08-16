@@ -63,7 +63,7 @@ class Note:
         if match:
             return match.group(0)
         else:
-            raise ValueError()
+            raise ValueError("Could not parse position from: '{}'".format(raw_title))
 
     @staticmethod
     def typeFromRawTitle(raw_title):
@@ -74,7 +74,7 @@ class Note:
         if match:
             return match.group(1)
         else:
-            raise ValueError()
+            raise ValueError("Could not parse title from: '{}'".format(raw_title))
 
     @staticmethod
     def _segmentsFromRawTitle(raw_title):
