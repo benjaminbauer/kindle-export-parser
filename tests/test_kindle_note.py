@@ -7,6 +7,7 @@ raw_title_minus_in_title = 'Highlight(yellow) - 7: The Secret to Self-Control > 
 raw_title_chapter_one_digit = 'Highlight(blue) - 1 > Page 236 · Location 3354'
 raw_title_note = 'Note - 1 > Page 237 · Location 3378'
 raw_title_bookmark = 'Bookmark - 2 > Page 242 · Location 3447'
+raw_title_roman_page = 'Highlight(yellow) - Page xi · Location 271'
 valid_text = 'lorem impsum'
 invalid_text_type = 23
 invalid_raw_title_type = 23
@@ -51,6 +52,7 @@ def test_chapter(test_input, expected):
     (raw_title_minus_in_title, "Page 92 · Location 1275"),
     (raw_title_note, "Page 237 · Location 3378"),
     (raw_title_bookmark, "Page 242 · Location 3447"),
+    (raw_title_roman_page, "Page xi · Location 271"),
 ])
 def test_postion(test_input, expected):
     assert Note(test_input, valid_text).position == expected

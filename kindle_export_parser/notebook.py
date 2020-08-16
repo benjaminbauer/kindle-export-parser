@@ -59,7 +59,7 @@ class Note:
     @staticmethod
     def positionFromRawTitle(raw_title):
         match = re.search(
-            r'[a-zA-Z]*\s([0-9]*?)\s·\s[a-zA-Z]*\s([0-9]*?)$', raw_title)
+            r'[a-zA-Z]*\s([0-9mdclxvi]+?)\s·\s[a-zA-Z]*\s([0-9]*?)$', raw_title)
         if match:
             return match.group(0)
         else:
